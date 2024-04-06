@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj": {}
+    "D:\\git\\CongNghePhanMem\\jira_clb_htsv\\website_CLB_HTSV\\website_CLB_HTSV.csproj": {}
   },
   "projects": {
-    "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj": {
+    "D:\\git\\CongNghePhanMem\\jira_clb_htsv\\website_CLB_HTSV\\website_CLB_HTSV.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
+        "projectUniqueName": "D:\\git\\CongNghePhanMem\\jira_clb_htsv\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
         "projectName": "website_CLB_HTSV",
-        "projectPath": "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "E:\\!Học Kì 6\\ASP.NET\\website_CLB_HTSV\\website_CLB_HTSV\\obj\\",
+        "projectPath": "D:\\git\\CongNghePhanMem\\jira_clb_htsv\\website_CLB_HTSV\\website_CLB_HTSV.csproj",
+        "packagesPath": "C:\\Users\\hang24\\.nuget\\packages\\",
+        "outputPath": "D:\\git\\CongNghePhanMem\\jira_clb_htsv\\website_CLB_HTSV\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hang24\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -146,7 +151,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
