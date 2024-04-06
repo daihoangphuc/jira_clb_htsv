@@ -1,0 +1,106 @@
+﻿@model website_CLB_HTSV.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Cập nhật thông tin";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="UpdateProfile" method="post" enctype="multipart/form-data">
+    @if(Model != null)
+    {
+        <div class="form-group">
+            <label asp-for="MaSV" class="control-label"></label>
+            <input asp-for="MaSV" class="form-control" value="@User.Identity.Name.Split('@')[0]" disabled />
+            <span asp-validation-for="MaSV" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HoTen" class="control-label"></label>
+            <input asp-for="HoTen" class="form-control" value="@Model.HoTen.ToString()" />
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NgaySinh" class="control-label"></label>
+            <input asp-for="NgaySinh" class="form-control" value="@Model.NgaySinh.ToString()" />
+            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DienThoai" class="control-label"></label>
+            <input asp-for="DienThoai" class="form-control" value="@Model.DienThoai" />
+            <span asp-validation-for="DienThoai" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" value="@Model.Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="display: none">
+            <label asp-for="MaChucVu" class="control-label"></label>
+            <select  asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu" disable></select>
+            <span asp-validation-for="MaChucVu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaLop" class="control-label"></label>
+            <select asp-for="MaLop" class="form-control" asp-items="ViewBag.MaLop"></select>
+            <span asp-validation-for="MaLop" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HinhAnh" class="control-label"></label>
+            <input type="file" name="newImage" class="form-control" accept="image/*" />
+            <span asp-validation-for="HinhAnh" class="text-danger"></span>
+        </div>
+    }
+    else
+    {
+        <div class="form-group">
+            <label asp-for="MaSV" class="control-label"></label>
+            <input asp-for="MaSV" class="form-control" value="@User.Identity.Name.Split('@')[0]" disabled />
+            <span asp-validation-for="MaSV" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HoTen" class="control-label"></label>
+            <input asp-for="HoTen" class="form-control" />
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NgaySinh" class="control-label"></label>
+            <input asp-for="NgaySinh" class="form-control"  />
+            <span asp-validation-for="NgaySinh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DienThoai" class="control-label"></label>
+            <input asp-for="DienThoai" class="form-control"/>
+            <span asp-validation-for="DienThoai" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="display: none">
+            <label asp-for="MaChucVu" class="control-label"></label>
+            <select asp-for="MaChucVu" class="form-control" asp-items="ViewBag.MaChucVu" ></select>
+            <span asp-validation-for="MaChucVu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="MaLop" class="control-label"></label>
+            <select asp-for="MaLop" class="form-control" asp-items="ViewBag.MaLop" ></select>
+            <span asp-validation-for="MaLop" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="HinhAnh" class="control-label"></label>
+            <input type="file" name="newImage" class="form-control" accept="image/*" />
+            <span asp-validation-for="HinhAnh" class="text-danger"></span>
+        </div>
+    }
+
+    <button type="submit" class="btn btn-primary ">Cập Nhật</button>
+    <button href="/" class="btn btn-secondary">Bỏ qua</button>
+</form>

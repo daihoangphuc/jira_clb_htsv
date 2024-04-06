@@ -1,0 +1,79 @@
+﻿@page
+@model RegisterModel
+@* @{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1> *@
+
+<div class="row">
+    <div class="container-fluid center-form">
+        <div class="col-md-4 container-fluid center-form">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" onsubmit="return validateEmail()">
+                <h2 style="text-align: center">Đăng ký tài khoản</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-floating">
+                    <input asp-for="Input.Email" id="Input_Email" class="form-control mb-2" autocomplete="username" aria-required="true" required />
+                    <label asp-for="Input.Email">Email (mssv@st.tvu.edu.vn)</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>  
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.Password" class="form-control mb-2" autocomplete="new-password" aria-required="true" required />
+                    <label asp-for="Input.Password">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.ConfirmPassword" class="form-control mb-2" autocomplete="new-password" aria-required="true" required />
+                    <label asp-for="Input.ConfirmPassword">ConfirmPassword</label>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mb-2">Đăng ký</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                @* Phần này để đăng nhập bằng dịch vụ khác *@
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                Không có dịch vụ xác thực nào được cấu hình. Xem bài viết này <a href="https://go.microsoft.com/fwlink/?LinkID=532715">về cách cấu hình ứng dụng ASP.NET để hỗ trợ đăng nhập qua các dịch vụ bên ngoài</a>.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins!)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Đăng nhập bằng tài khoản @provider.DisplayName của bạn">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function validateEmail() {
+            var emailInput = document.getElementById('Input_Email');
+            var emailPattern = /[A-Za-z0-9._%+-]+@@st\.tvu\.edu\.vn/;
+            if (!emailPattern.test(emailInput.value)) {
+                alert('Vui lòng nhập địa chỉ email đúng định dạng theo email sinh viên (Mssv@@st.tvu.edu.vn)');
+                return false; // Ngăn chặn gửi form
+            }
+            return true; // Cho phép gửi form
+        }
+    </script>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,163 @@
+﻿@model PaginatedList<TinTuc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+
+<form asp-controller="TinTucs" asp-action="Index" class="search-form justify-center mb-2">
+    <div class="search-container">
+        <input type="text" class="search-input w-full md:w-80 mb-2 md:mb-0" placeholder="Tìm kiếm" name="SearchString">
+        <button class="search-button ml-2">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+</form>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<style>
+    /* Form */
+    .search-form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-container {
+        position: relative;
+        width: 700px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 10px 20px;
+        border: 1px solid #38b7fd;
+        border-radius: 25px;
+        font-size: 16px;
+        outline: none;
+        background-color: transparent;
+    }
+
+    .search-button {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding-bottom: 10px;
+    }
+
+        .search-button i {
+            font-size: 20px;
+        }
+
+  
+
+    /* Responsive adjustments */
+    @@media (min-width: 640px) {
+        .swiper-slide {
+            width: calc(25% - 20px);
+            margin-right: 20px;
+        }
+
+        .swiper-pagination {
+            display: none;
+        }
+    }
+
+    @@media (max-width: 639px) {
+        .swiper-slide {
+            width: 100%; /* Mỗi slide chỉ hiển thị một mục trên điện thoại */
+            margin-right: 0;
+        }
+
+        .tt {
+            font-size: 25px;
+        }
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tiêu đề
+            </th>
+            <th>
+                Hình ảnh
+            </th>
+            <th>
+               Nội dung
+            </th>
+            <th>
+                Ngày đăng
+            </th>
+            <th>
+                Người đăng
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TieuDe)
+                </td>
+                <td> <img src="@(Url.Content("~/newsimages/" + item.HinhAnh))" alt="Hình ảnh" class="img-thumbnail" style="width: 50px;" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoiDung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NguoiDang)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MaTinTuc">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MaTinTuc">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MaTinTuc">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    // Kiểm tra có trang trước hoặc trang sau không
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<nav class="flex justify-between mt-4">
+    <ul class="pagination">
+        <!-- Liên kết trang trước -->
+        <li class="page-item @prevDisabled">
+            <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1 })">Previous</a>
+        </li>
+        <!-- Liên kết các trang -->
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+            </li>
+        }
+        <!-- Liên kết trang tiếp theo -->
+        <li class="page-item @nextDisabled">
+            <a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1 })">Next</a>
+        </li>
+    </ul>
+</nav>
