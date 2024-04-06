@@ -1,0 +1,201 @@
+﻿﻿  <!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center" style="margin-top: -40px">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up" style="color:  #ff64c5">TUỔI TRẺ</h1>
+                <h1 data-aos="fade-up" data-aos-delay="400" style="color: #38b7fd; padding-left: 40px; margin-left: 60px">LÀ ĐỂ </h1>
+                <h1 data-aos="fade-up" data-aos-delay="600" style="color: #ff64c5; padding-left: 40px; margin-left: 100px">CỐNG HIẾN</h1>
+
+                <div data-aos="fade-up" data-aos-delay="800">
+                    <a href="#section2" class="btn-get-started scrollto">Khám phá</a>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                <img src="/assets/img/banner1.png" class="pl-10 img-fluid animated" alt="">
+            </div>
+        </div>
+    </div>
+
+</section><!-- End Hero -->
+
+<div class="section-title" id="section2" style="margin-bottom: 0" data-aos="fade-up" data-aos-delay="200">
+    <h2 class="gt" style="color: #38b7fd; font-size: 25px;">GIỚI THIỆU</h2>
+</div>
+<div class="d-flex h-70 justify-content-between ">
+    <iframe class="responsive-iframe shadow-lg rounded-4" src="https://drive.google.com/file/d/1t6A1gRrx9ULccY7Db9NX0NAA1qy0HcG3/preview" allow="autoplay"></iframe>
+    <div class="section-title" id="content" style="width: 600px;  height: 400px; padding: 0 20px; margin-bottom: 0" data-aos="fade-up" data-aos-delay="200">
+        <p id="typed-text" style="margin-top: 0"></p>
+    </div>
+</div>
+<style>
+
+        /* Thiết lập font size cho điện thoại */
+    @@media only screen and (max-width: 600px) {
+        #typed-text {
+            font-size: 17px;
+        }
+    }
+
+    /* Thiết lập font size cho laptop */
+    @@media only screen and (min-width: 601px) {
+        #typed-text {
+            font-size: 23px;
+        }
+    }
+
+
+    .section-title {
+        font-size: 20px;
+        padding-bottom: 20px;
+        white-space: pre-wrap;
+        overflow: hidden;
+    }
+
+    @@media (max-width: 991.98px) {
+        .pl-lg-4 {
+            padding-left: 0 !important;
+        }
+    }
+  .d-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .responsive-iframe {
+    width: 100%;
+    height: 200px;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  @@media only screen and (min-width: 600px) {
+    .responsive-iframe {
+      width: 50%;
+      height: 400px;
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      width: 50%;
+      margin: auto;
+      text-align: left;
+    }
+
+        .content {
+            padding-left: 10px; /* Đặt padding bên trái */
+            padding-right: 1c0px; /* Đặt padding bên phải */
+            box-sizing: border-box;
+        }
+  }
+
+</style>
+<script>
+    var text = "Đây là một buổi đồng diễn của CLB chúng ta. CLB Hành Trình Sinh Viên, không chỉ là nơi để gặp gỡ bạn bè mới và chia sẻ sở thích chung, mà còn là một cộng đồng đầy sức mạnh, sự sáng tạo và lòng nhiệt huyết. Chúng tôi tin rằng mỗi sinh viên đều có khả năng vượt qua mình và phát triển không ngừng trong hành trình của mình, và chúng tôi sẵn sàng đồng hành cùng bạn trên con đường đó.";
+    var speed = 70;
+    var i = 0;
+    var scrolled = false;
+
+    function startTyping() {
+        var contentPosition = document.getElementById("content").getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+
+        if (contentPosition < screenPosition && !scrolled) {
+            scrolled = true;
+            typeWriter();
+        }
+    }
+
+    function typeWriter() {
+        if (i < text.length) {
+            document.getElementById("typed-text").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    window.addEventListener('scroll', startTyping);
+</script>
+@await Component.InvokeAsync("ListTinTuc")
+@await Component.InvokeAsync("ListBanChuNhiem")
+
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" style="padding-top: 0" class="contact">
+    <div class="container">
+
+        <div class="section-title" style="margin-bottom: 0" data-aos="fade-up">
+            <h2>Liên hệ</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="contact-about">
+@*                     <h3> Mạng Xã Hội</h3> *@
+                    @* <p>Hãy đến và trải nghiệm sự phấn khích của việc tham gia vào CLB Hành Trình Sinh Viên! Chúng tôi sẽ giúp bạn tạo ra những kỷ niệm đáng nhớ và hỗ trợ bạn trong mọi bước đi trên con đường học tập và phát triển cá nhân.</p> *@
+                    <div class="social-links text-center" >
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+                <div class="info">
+                    <div>
+                        <i class="ri-map-pin-line"></i>
+                        <p>126 Nguyễn Thiện Thành <br>Phường 5, Thành phố Trà Vinh, Tỉnh Trà Vinh</p>
+                    </div>
+
+                    <div>
+                        <i class="ri-mail-send-line"></i>
+                        <p>clbhanhtrinhsinhvien@gmail.com</p>
+                    </div>
+
+                    <div>
+                        <i class="ri-phone-line"></i>
+                        <p>+84 366999999</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email của bạn" required>
+                    </div>
+@*                     <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                    </div> *@
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Bạn có thắc mắc gì?" required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Tin nhắn đã được gửi đi. Cảm ơn bạn đã quan tâm!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">Gửi</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+
+              
